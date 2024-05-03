@@ -1,0 +1,29 @@
+Certainly! Let's break down each step of the code:
+
+    Install and load necessary packages:
+        This part installs and loads the tidyverse package, which includes several packages for data manipulation (dplyr), data visualization (ggplot2), and other useful functions.
+
+    Read the data from the CSV file:
+        The read.csv function reads the data from the specified Excel file into a dataframe named data.
+
+    Calculate change in x and y coordinates:
+        Using the mutate function from the dplyr package, this step calculates the change in x and y coordinates (delta_x and delta_y) between consecutive points in the dataset. This is done by subtracting the current x and y coordinates from the next ones.
+
+    Calculate angle of turn:
+        The atan2 function calculates the angle (in radians) between the change in y and x coordinates for each point. This angle is then converted to degrees using * 180 / pi. The resulting angle is stored in a new column named angle.
+
+    Calculate turning rate (degrees per second):
+        First, the time_diff between consecutive timestamps is calculated using lead(timestamp_sec) - timestamp_sec. This represents the time interval between consecutive points.
+        Then, the turning_rate is calculated by dividing the angle by the time_diff. This gives the turning rate in degrees per second.
+
+    Calculate turning radius (meters):
+        The turning radius is calculated using the Euclidean distance formula, which is the square root of the sum of squares of the change in x and y coordinates (sqrt(delta_x^2 + delta_y^2)).
+
+    Calculate overall turning rate and turning radius:
+        The overall turning rate is calculated by taking the mean of the turning_rate column, excluding any missing values (na.rm = TRUE).
+        Similarly, the overall turning radius is calculated by taking the mean of the turning_radius column, excluding any missing values.
+
+    Output the results:
+        Finally, the code prints out the overall turning rate and turning radius using cat function.
+
+If the output values don't seem correct, it might be due to issues with the data or the calculations. Make sure the data is correctly formatted and the calculations are appropriate for your specific dataset. You may also want to double-check the formulas used for calculating the angle, turning rate, and turning radius.

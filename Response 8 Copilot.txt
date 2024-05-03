@@ -1,0 +1,34 @@
+Sure, I can help you with that. Here’s a basic R script that should do the job. This script assumes that the sea lion is moving in a circular path during the turn.
+
+# Load necessary libraries
+install.packages("tidyverse")
+library(tidyverse)
+
+# Read the data
+data <- read.csv("C:\\Users\\ariel\\OneDrive\\BAYLOR\\BIO 5100 AI Coding\\AI coding sea lion data.csv")
+
+# Calculate the differences in x, y coordinates and time
+data <- data %>%
+  mutate(dx = lead(x_space_m) - x_space_m,
+         dy = lead(y_space_m) - y_space_m,
+         dt = lead(timestamp_sec) - timestamp_sec)
+
+# Calculate the instantaneous velocity and angular velocity
+data <- data %>%
+  mutate(velocity = sqrt(dx^2 + dy^2) / dt,
+         angular_velocity = 180 / dt)
+
+# Calculate the radius of the turn (v = w*r)
+data <- data %>%
+  mutate(radius = velocity / (angular_velocity * pi / 180))
+
+# Calculate the average turning rate and turning radius
+avg_turning_rate <- mean(data$angular_velocity, na.rm = TRUE)
+avg_turning_radius <- mean(data$radius, na.rm = TRUE)
+
+# Print the results
+print(paste("Average turning rate (in degrees per second): ", avg_turning_rate))
+print(paste("Average turning radius (in meters): ", avg_turning_radius))
+
+
+This script calculates the turning rate and turning radius based on the differences in the x,y coordinates and timestamps. It then calculates the average turning rate and turning radius over the entire turn. Please note that this is a simple calculation and assumes the sea lion is moving in a perfect circle, which might not be the case in reality. You might need to adjust the calculations based on the actual movement pattern of the sea lion. Also, please make sure the path to your CSV file is correct. If there are any issues, feel free to ask!

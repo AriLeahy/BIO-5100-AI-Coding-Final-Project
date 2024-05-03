@@ -1,0 +1,46 @@
+Certainly! Let’s break down each function used in the R code snippet:
+
+    diff(atan2(y_space_m, x_space_m)):
+        This calculates the difference in the arctangent of y_space_m divided by x_space_m for consecutive data points.
+        The atan2 function computes the angle (in radians) between the positive x-axis and the point (x_space_m, y_space_m) in the Cartesian plane.
+        Taking the difference gives the change in angle (turning angle) between consecutive points.
+
+    delta_time_sec <- diff(timestamps):
+        This computes the time interval (in seconds) between consecutive timestamps.
+        It uses the diff function to find the difference between adjacent elements in the timestamps vector.
+
+    turning_rate_deg_per_sec <- delta_theta_deg / delta_time_sec:
+        Calculates the turning rate (angular velocity) in degrees per second.
+        Divides the change in angle (in degrees) by the corresponding time interval.
+
+    turning_radius_m <- length_m / (2 * sin(delta_theta_deg / 2)):
+        Computes the turning radius based on the animal’s body length and the change in angle.
+        Uses the sine function to relate the turning angle to the radius.
+
+
+turning_rate_rad_per_sec <- delta_theta_deg * (pi / 180):
+
+    Converts the turning rate from degrees per second to radians per second.
+    Multiplies the turning rate (in degrees) by the conversion factor (pi / 180).
+
+turning_velocity_m_per_sec <- turning_radius_m * turning_rate_rad_per_sec:
+
+    Calculates the turning velocity (linear velocity) in meters per second.
+    Multiplies the turning radius by the turning rate (in radians per second).
+
+centripetal_acceleration_m_per_sec2 <- turning_velocity_m_per_sec^2 / turning_radius_m:
+
+    Computes the centripetal acceleration (acceleration toward the center of the turn) in meters per second squared.
+    Uses the formula for centripetal acceleration: a = v^2 / r.
+
+g_force <- centripetal_acceleration_m_per_sec2 / 9.8:
+
+    Determines the g-force (multiples of gravitational force) experienced during the turn.
+    Divides the centripetal acceleration by the acceleration due to gravity (approximately 9.8 m/s²)
+
+In summary:
+
+    The code processes the given data to calculate turning-related parameters such as turning rate, turning radius, turning velocity, centripetal acceleration, and g-force.
+    It uses trigonometric functions, time intervals, and basic physics formulas to perform these calculations.
+
+Feel free to ask if you have any further questions! 😊

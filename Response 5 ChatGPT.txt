@@ -1,0 +1,22 @@
+Sure! Let's go through the code step by step:
+
+    Install and load necessary packages:
+        install.packages("tidyverse"): This line installs the tidyverse package if it's not already installed.
+        library(tidyverse): This line loads the tidyverse package, which is a collection of R packages designed for data science, including ggplot2, dplyr, tidyr, and others.
+
+    Load the data:
+        sea_lion_data <- read.csv("C:\\Users\\ariel\\OneDrive\\BAYLOR\\BIO 5100 AI Coding\\AI coding sea lion data.csv"): This line reads the sea lion data from the specified Excel file using the read.csv function. The \\ is used to escape the backslashes in the file path.
+
+    Define a function to calculate turning parameters:
+        calculate_turning_parameters: This is a custom function that takes three arguments: x, y, and timestamp, representing the x-coordinates, y-coordinates, and timestamps of the sea lion's movement data, respectively.
+        Inside the function:
+            dx <- diff(x), dy <- diff(y), dt <- diff(timestamp): These lines calculate the differences between consecutive x-coordinates, y-coordinates, and timestamps, respectively.
+            d_theta <- atan2(dy, dx): This calculates the angle turned (in radians) between consecutive points using the atan2 function, which takes the change in y and x coordinates as arguments.
+            turning_rate, turning_radius, turning_velocity, centripetal_acceleration, g_force: These variables calculate the turning rate, turning radius, turning velocity, centripetal acceleration, and g-force, respectively, using the formulas provided in the comments.
+            The mean function is used to calculate the mean value of each parameter across the entire turn.
+
+    Apply the function to the sea lion data:
+        turning_parameters <- calculate_turning_parameters(sea_lion_data$x_space_m, sea_lion_data$y_space_m, sea_lion_data$timestamp_sec): This line applies the calculate_turning_parameters function to the sea lion data, passing the x-coordinates, y-coordinates, and timestamps as arguments. It stores the calculated turning parameters in the turning_parameters data frame.
+
+    Print the calculated turning parameters:
+        print(turning_parameters): This line prints out the calculated turning parameters, which include the mean turning rate, turning radius, turning velocity, centripetal acceleration, and g-force across the entire turn.

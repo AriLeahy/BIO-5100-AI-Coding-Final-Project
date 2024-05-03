@@ -1,0 +1,1 @@
+Now can you please edit the r code so it calculates a single value across the entirety of the turn for each turning parameter (turning rate, turning radius, turning velocity, centripetal acceleration, g force) 

@@ -1,0 +1,1 @@
+This code is still not producing accurate results. From the code provided, I was given a turning radius of 0.04 meters, which is impossible for an animal of this size. Is there a way to make the code more nuanced to account for the 180 degree, "U" shaped turn where the velocityof the animal is not constant

@@ -1,0 +1,23 @@
+Sure! Let's go through each function used in the code and explain its purpose:
+
+    install.packages("pracma"): This function installs the "pracma" package if it's not already installed in your R environment. The "pracma" package contains various mathematical functions and numerical methods.
+
+    library(pracma): This function loads the "pracma" package into the R environment, making its functions available for use.
+
+    calculate_turning_rate: This is a custom function defined to calculate the turning rate of the sea lion in degrees per second. It takes three arguments: x, y, and timestamp. These represent the x and y coordinates of the sea lion at different timestamps. The function computes the derivative of x and y with respect to timestamp, and then calculates the turning rate using the arctangent function (atan2) and converts the result from radians to degrees.
+
+    calculate_turning_radius: This is another custom function defined to calculate the turning radius of the sea lion's turn in meters. It takes x and y coordinates as arguments. The function computes the second derivative of x and y with respect to time to find the curvature, and then calculates the turning radius using a formula based on curvature.
+
+    data$turning_rate_deg_per_sec: This line calculates the turning rate in degrees per second by applying the calculate_turning_rate function to the x_space_m, y_space_m, and timestamp_sec columns of the data dataframe.
+
+    data$turning_radius_m: This line calculates the turning radius in meters by applying the calculate_turning_radius function to the x_space_m and y_space_m columns of the data dataframe.
+
+    data$turning_rate_rad_per_sec: This line converts the turning rate from degrees per second to radians per second by multiplying the turning rate in degrees per second by (pi / 180).
+
+    data$turning_velocity_m_per_sec: This line calculates the turning velocity in meters per second by multiplying the turning radius (in meters) by the turning rate (in radians per second).
+
+    data$centripetal_acceleration_m_per_sec2: This line calculates the centripetal acceleration in meters per second squared by dividing the square of the turning velocity by the turning radius.
+
+    data$g_force: This line calculates the g-force of the turn (in multiples of gravitational force) by dividing the centripetal acceleration by the gravitational constant g (approximately 9.81 m/s^2).
+
+    avg_turning_rate, avg_turning_radius, avg_turning_velocity, avg_centripetal_acceleration, avg_g_force: These lines calculate the average value of each turning parameter across the entirety of the turn by taking the mean of the respective columns in the data dataframe. The na.rm = TRUE argument is used to remove any missing values from the calculation. These averaged values are then printed.

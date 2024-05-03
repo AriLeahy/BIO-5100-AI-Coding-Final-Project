@@ -1,0 +1,29 @@
+I apologize for the oversight. Let’s revise the code to correctly calculate the turning rate and turning radius from the given x and y coordinates. We’ll follow these steps:
+
+    Calculate Turning Rate: We’ll compute the change in angle over time using the x and y coordinates. The turning rate (in degrees per second) can be obtained by dividing the change in angle by the change in time.
+
+    Calculate Turning Radius: The turning radius (in meters) can be derived from the curvature of the trajectory. We’ll calculate the distance of each point from the mean position (center of the turn) and then average those distances.
+
+Here’s the updated R script:
+
+# Load required packages
+library(tidyverse)
+
+# Read the data file
+data <- read.csv("C:\\Users\\ariel\\OneDrive\\BAYLOR\\BIO 5100 AI Coding\\AI_coding_sea_lion_data.csv")
+
+# Calculate turning rate (degrees per second)
+delta_x <- diff(data$x_space_m)
+delta_y <- diff(data$y_space_m)
+delta_time <- diff(data$timestamp_sec)
+angles <- atan2(delta_y, delta_x) * 180 / pi
+turning_rate <- angles / delta_time
+
+# Calculate turning radius (in meters)
+radius <- sqrt((data$x_space_m - mean(data$x_space_m))^2 + (data$y_space_m - mean(data$y_space_m))^2)
+
+# Print the results
+cat("Turning Rate (degrees per second):", mean(turning_rate), "\n")
+cat("Turning Radius (meters):", mean(radius), "\n")
+
+Make sure to adjust the column names and file path according to your actual data file. If there are any additional considerations or specific requirements, feel free to let me know! 🌊🦁123

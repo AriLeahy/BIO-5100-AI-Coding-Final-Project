@@ -1,0 +1,52 @@
+# Install and load necessary packages
+install.packages("tidyverse")
+library(tidyverse)
+
+# Load the data
+sea_lion_data <- read.csv("C:\\Users\\ariel\\OneDrive\\BAYLOR\\BIO 5100 AI Coding\\AI coding sea lion data.csv")
+
+# Calculate turning parameters
+calculate_turning_parameters <- function(x, y, timestamp) {
+  # Calculate change in x and y coordinates
+  dx <- diff(x)
+  dy <- diff(y)
+  
+  # Calculate change in time
+  dt <- diff(timestamp)
+  
+  # Calculate angle turned (in radians)
+  d_theta <- atan2(dy, dx)
+  
+  # Calculate turning rate (in degrees per second)
+  turning_rate <- abs(d_theta) / dt * 180 / pi
+  
+  # Calculate turning radius (in meters)
+  turning_radius <- sqrt(dx^2 + dy^2)
+  
+  # Calculate turning velocity (in meters per second)
+  turning_velocity <- turning_radius / dt
+  
+  # Calculate centripetal acceleration (in meters per second squared)
+  centripetal_acceleration <- turning_velocity^2 / turning_radius
+  
+  # Calculate g-force of the turn (in multiples of gravitational force)
+  g_force <- centripetal_acceleration / 9.81
+  
+  # Return a data frame with calculated parameters
+  data.frame(
+    turning_rate = mean(turning_rate, na.rm = TRUE),
+    turning_radius = mean(turning_radius, na.rm = TRUE),
+    turning_velocity = mean(turning_velocity, na.rm = TRUE),
+    centripetal_acceleration = mean(centripetal_acceleration, na.rm = TRUE),
+    g_force = mean(g_force, na.rm = TRUE)
+  )
+}
+
+# Apply the function to the sea lion data
+turning_parameters <- calculate_turning_parameters(sea_lion_data$x_space_m,
+                                                   sea_lion_data$y_space_m,
+                                                   sea_lion_data$timestamp_sec)
+
+# Print the calculated turning parameters
+print(turning_parameters)
+

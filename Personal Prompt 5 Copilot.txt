@@ -1,0 +1,1 @@
+This code provided me with a turning parameter summary table with all "NA" for the final values, can you please edit the r code to fix this problem

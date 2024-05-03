@@ -1,0 +1,20 @@
+I have biomechanical data of sea lions performing aquatic turns. This data includes animal body length (in meters) “length_m”, x,y coordinates of anatomical points of the sea lion throughout the aquatic turn (in meters) “x_space_m” and “y_space_m”, and the timestamps (in seconds) “timestamp_sec” associated with the anatomical x,y coordinates throughout the video. 
+
+timestamp_sec	x_space_m	y_space_m	length_m
+0.016667	0.625	0.703	1.96
+0.033334	0.623	0.655	
+0.050001	0.630	0.613	
+0.066668	0.638	0.578	
+1.016667	0.643	0.533	
+1.033334	0.668	0.486	
+1.050001	0.693	0.453	
+1.066668	0.725	0.423	
+2.016667	0.752	0.396	
+2.033334	0.792	0.366	
+2.050001	0.842	0.344	
+2.066668	0.875	0.326	
+3.016667	0.922	0.316	
+3.033334	0.967	0.316	
+3.050001	1.002	0.321	
+
+Can you please write a functional r code, including all package downloads and library, that will use the animal’s body length, timestamps, and extracted x,y coordinates of manually tracked 2D video to calculate the animal’s turning rate ( in degrees per second), turning radius (in meters), convert turning rate into radians to then calculate turning velocity ( in meters per second), centripetal acceleration of the turn (in meters per second squared), and g-force of the turn (in multiples of gravitational force), in that specific order.

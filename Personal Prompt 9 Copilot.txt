@@ -1,0 +1,1 @@
+Is there any way to make this code more nuanced if the animal is not turning in a perfect circle
